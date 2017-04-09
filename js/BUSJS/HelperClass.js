@@ -229,6 +229,7 @@ HelperClass.prototype.getDistinctNames = function(raws) {
 };
 
 HelperClass.prototype.getFileName = function(str) {
+  if (str == null) return "";
   if (str.lastIndexOf("/") <= 0) return str;
   return str.substr(str.lastIndexOf("/"), str.length);
 };

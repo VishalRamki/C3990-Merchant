@@ -33,10 +33,19 @@ function del_store(code) {
       helper.showLoader();
       reload("store", function(e) {
         store();
+        // inform the user;
+        helper.showMessage({
+          message: "Store " + response.deleted + " was deleted.",
+          type: "success"
+        });
       });
     } else {
       helper.hideLoader();
       // inform the user;
+      helper.showMessage({
+        message: "There was an error deleting the store, or the wrong store was deleted.",
+        type: "danger"
+      });
     }
   });
 }
@@ -227,6 +236,11 @@ function createStore() {
         helper.showLoader();
         reload("store", function(e) {
           store();
+          // inform the user;
+          helper.showMessage({
+            message: "Your new store " + response[0].store_id + " has been created.",
+            type: "success"
+          });
         });
       }
     }); // end POST ajax;

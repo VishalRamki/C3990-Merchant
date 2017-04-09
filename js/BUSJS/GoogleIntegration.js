@@ -27,7 +27,7 @@ function onSignIn(googleUser) {
         console.log("make new user");
         $.ajax({
           method: "POST",
-          url: LOCATION + "/user",
+          url: SITE.location + "/user",
           crossDomain: true,
           dataType: "application/json",
           data: { "google_oauth_token": profile.getId() }

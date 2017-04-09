@@ -32,11 +32,11 @@ function del_promo(code) {
       // do not delay; reload the page with the updated list;
       helper.showLoader();
       reload("store_promo", function(e) {
+        promos();
         helper.showMessage({
           message: "The Promotion " + response.deleted + " was removed from database",
           type: "success"
-        })
-        promos();
+        });
       });
     } else {
       helper.hideLoader();
@@ -238,7 +238,7 @@ function promo_mod(code) {
 
     // make sure that expires had data in it;
     // if not, just the leave the checkbox unchecked
-    if (promoData.expires != "" || promoData.expires != null) {
+    if (promoData.expires != "" && promoData.expires != null) {
       $("#expireCheck").attr("checked", true);
       // $("#expires").val(promoData.expires);
       // $("#expires").attr("placeholder", promoData.expires);
@@ -246,16 +246,17 @@ function promo_mod(code) {
         format: "DD/MM/YYYY HH:mm A",
         defaultDate: moment(promoData.expires, 'DD/MM/YYYY HH:mm A')
       });
+      console.log(moment(promoData.expires, 'DD/MM/YYYY HH:mm A'));
     }
     // do the same thing here;
-    if (promoData.coupon != "") {
+    if (promoData.coupon != "" && promoData.coupon != null) {
       $("#couponCheck").attr("checked", true);
       $("#coupon").val(promoData.coupon);
       $("#coupon").attr("placeholder", promoData.coupon);
     }
 
     // type to check if any images where
-    if (promoData.promotionImage != "") {
+    if (promoData.promotionImage != "" && promoData.promotionImage != null) {
       $("#promotionalMats").attr("checked", true);
       $("#fileName").text(helper.getFileName(promoData.promotionImage));
 
@@ -313,7 +314,8 @@ function promo_mod(code) {
     var expires = null;
     if ($("#expireCheck").is(":checked")) {
       console.log ("checked");
-      expires = $("#expires").val();
+      expires = $("#datetimepicker4").val();
+      console.log(expires)
     }
     var coupon = null;
     if ($("#couponCheck").is(":checked")) {
@@ -376,6 +378,10 @@ function makePromoActive() {
   }).done(function (response) {
     reload("store_promo", function() {
       promos();
+      helper.showMessage({
+        message: "You have Made Promotion: " + USER.currentPromotion + " the active promotion.",
+        type: "success"
+      });
     });
   }); // end promo active
 

@@ -43,6 +43,7 @@ function switchIt(code) {
       USER.currentStore = code.itemKey.store;
       USER.currentPromotion = code.itemKey.promotion;
       del_promo(code);
+      break;
     case "make_active_promo":
       USER.currentStore = code.itemKey.store;
       USER.currentPromotion = code.itemKey.promotion;
