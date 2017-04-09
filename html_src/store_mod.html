@@ -1,0 +1,72 @@
+<div class="page-header">
+  <h1>View Store (<span class="xxx"></span>)</h1>
+</div>
+  <p>
+<div id="modify_data">
+  <div id="alertSpace"></div>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Edit Basic Store Information</legend>
+
+<!-- Text input-->
+<div class="form-group">
+<label class="col-md-4 control-label" for="storeName">Store Name</label>
+<div class="col-md-4">
+<input id="storeName" name="storeName" type="text" placeholder="Your Store's Name" class="form-control input-md">
+
+</div>
+</div>
+
+<!-- Select Multiple -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectmultiple">Select Multiple</label>
+  <div class="col-md-4">
+    <select id="selectmultipleBeacon" name="selectmultiple" class="form-control" multiple="multiple">
+      <!-- <option value="1">Option one</option> -->
+    </select>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <div class="btn-group btn-group-justified" role="group" aria-label="">
+        <div class="btn-group" role="group">
+          <button id="submit" name="submit" class="btn btn-primary">Modify</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary" id="cancelStoreMod">Cancel (Go Back)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<div class="page-header">
+  <h1>Beacons</h1>
+</div>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Beacon UUID</th>
+      </tr>
+    </thead>
+    <tbody id="insert_beacons">
+      <!-- <tr>
+        <td>1</td>
+        <td>The wrw</td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+</div>
