@@ -72,11 +72,13 @@ function store_mod(code) {
   }).done(function(msg) {
     // load the first entry into its own object;
     var storeData = msg[0];
-    console.log(storeData.name);
+    console.log(storeData);
 
     // assign the gotten data into the form;
     $("#storeName").attr("placeholder", storeData.name);
     $("#storeName").val(storeData.name);
+    $("#longtitude").val(storeData.long || "");
+    $("#latitude").val(storeData.lat || "");
 
     // convert beacon data into html data;
     var ht = helper.buildBeaconList(storeData.beacons);
@@ -128,10 +130,13 @@ function store_mod(code) {
         beacons.push(selText);
       }
     });
+
     console.log(beacons);
     console.log({ "store_id": itemKey, update: JSON.stringify({
       "name": $("#storeName").val(),
-      "beacons": beacons
+      "beacons": beacons,
+      "long": $("#longtitude").val(),
+      "lat": $("#longtitude").val()
     }) });
 
     // update store ajax;
@@ -140,7 +145,9 @@ function store_mod(code) {
       url: SITE.location + "/store",
       data: { "store_id": itemKey, update: JSON.stringify({
         "name": $("#storeName").val(),
-        "beacons": beacons
+        "beacons": beacons,
+        "long": $("#longtitude").val(),
+        "lat": $("#latitude").val()
       }) }
     }).done(function(msg) {
       helper.hideLoader();

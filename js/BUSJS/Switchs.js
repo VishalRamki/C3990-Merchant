@@ -97,11 +97,12 @@ function purchase() {
     var email = $("#email").val();
     var message = $("#optional").val();
     var beaconnum = $("#beaconNum").val();
+    var user_id = USER.currentUser;
 
       $.ajax({
         method: "POST",
         url: SITE.location + "/order",
-        data: {"email": email, "message": message, "beacons": beaconnum}
+        data: {"email": email, "message": message, "beacons": beaconnum, "user_id": user_id}
       }).done(function(response) {
         console.log(response);
         helper.hideLoader();

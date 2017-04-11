@@ -170,7 +170,7 @@ HelperClass.prototype.getDistinctPromoData = function(promoNames, raws) {
   for (var i = 0; i < promoNames.length; i++) {
     var tmpData = 0;
     for (var j = 0; j < raws.length; j++) {
-      if (promoNames[i] == raws[j].promotion.title) {
+      if (raws[j].hasOwnProperty("promotion") && promoNames[i] == raws[j].promotion.title) {
         tmpData++;
       }
     }
@@ -187,11 +187,11 @@ HelperClass.prototype.getDistinctPromotions = function(raws) {
     for (var j = 0; j < names.length; j++) {
       console.log(raws[i]);
 
-      if (raws[i].promotion.title == names[j]) {
+      if (raws[i].hasOwnProperty("promotion") && raws[i].promotion.title == names[j]) {
         inside = 0;
       }
     }
-    if (inside == 1) names.push(raws[i].promotion.title);
+    if (inside == 1 && raws[i].hasOwnProperty("promotion")) names.push(raws[i].promotion.title);
   }
 
   return names;
